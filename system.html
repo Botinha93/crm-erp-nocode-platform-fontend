@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="theme/normalize.css">
+        <link rel="stylesheet" href="theme/fonts.css">
+        <link rel="stylesheet" href="theme/style.css">
+        <script src ="app-base\internal.js" type="module" ></script>
+        <script src ="app-base\load.js" type="module"  ></script>
+    </head>
+    <script>
+        var sidemenuheaderStatus = true;
+        function sidemenuheaderClick(event){
+            if(sidemenuheaderStatus){
+                document.getElementById('side-menu-container').style.minWidth = '39px';
+                document.getElementById('side-menu-container').style.maxWidth = '39px';
+                sidemenuheaderStatus = false;
+            }
+            else{
+                document.getElementById('side-menu-container').style.minWidth = '';
+                document.getElementById('side-menu-container').style.maxWidth = '';
+                sidemenuheaderStatus = true;
+            }
+        }
+        function buttonLogin(){
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', "login", true);
+                xhr.responseType = 'json';
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader('user', document.getElementById('login-form-user').value);
+                xhr.setRequestHeader('pass', document.getElementById('login-form-pass').value);
+                xhr.onload = function() {
+                var status = xhr.status;
+                    if (status === 200) {
+                        if(xhr.response != "Invalid"){
+                            localStorage.setItem('token', xhr.response);
+                            document.getElementById('login-form-bg').style.display = 'none';
+                        }
+                    } else {
+                        console.log(status, xhr.response);
+                    }
+                };
+                xhr.send();
+            }
+    </script>
+    <body>
+        <div id="top-bar"></div>
+        <div id="app-container" class="fleRow">
+            <div id="side-menu-container"><div id="side-menu-header" onclick="sidemenuheaderClick(event)"><img src="images/menu-1.png"/><h3 style=" flex-grow: 1; margin-top: 17px;">Menu</h3></div><ul id="side-menu"></li></ul></div>
+            <div id="app-container" class="flexColumn">
+                <div id="nav-bar"><ul id="nav-bar-menu"></ul><div id="nav-bar-dropmenu-buttom">... <ul id="nav-bar-dropmenu"></ul></div></div>
+                <div id="div-content"></div>
+            </div>
+        </div>
+        <div id="login-form-bg">
+            <div id="login-form">
+                <div class="imgbg">
+                    <img src="images/User-Login.png"/>
+                </div>
+                <h2>ACCOUNT LOGIN</h2>
+                <div style="width: 280px;margin-left: -30px;">
+                    <h1>User</h1>
+                    <input type="text" autocomplete="username"  id="login-form-user">
+                    <h1>Password</h1>
+                    <input type="password" autocomplete="current-password" id="login-form-pass">>
+                    <button onclick="buttonLogin()">Login</button>
+                </div>
+            </div>
+        </div>
+        <script type="module">
+            var sidemenuheaderStatus = true;
+            function sidemenuheaderClick(event){
+                if(sidemenuheaderStatus)
+                    document.getElementById('side-menu-container').style.width = '40px';
+                else
+                    document.getElementById('side-menu-container').style.width = '';
+            }
+            import {loadingProcess} from './app-base/load.js'
+        </script>
+    </body>
+</html>

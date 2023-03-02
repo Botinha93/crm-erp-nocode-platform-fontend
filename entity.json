@@ -1,0 +1,17 @@
+{
+    "name" : "clintescontas",
+    "localizedName" : "Clientes",
+    "proprieties" : [
+        {
+            "name": "Name",
+            "localizedName" : "Name",
+            "Type" : "TextBox"
+        },
+        {
+            "name": "Country",
+            "localizedName" : "Country",
+            "Type" : "TextBox"
+        }
+    ]
+    
+}

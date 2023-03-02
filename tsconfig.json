@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+      "target": "es2019",
+      "sourceMap": true,
+      "outDir": "C:/Users/Botin/source/repos/Server-CRM-Framework/Server-CRM-Framework/wwwroot/app-base",
+      "rootDir": "app-base"
+    }
+  }

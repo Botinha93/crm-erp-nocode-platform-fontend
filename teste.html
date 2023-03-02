@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  display: flex;
+  flex-wrap: wrap;
+}
+.content-main-dropdown{
+  display: flex;
+  width: 100%;
+}
+.module-dropdown {
+    width: 100%;
+    font-size: 16px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-top: 6px;
+    overflow: 100%;
+    margin-right: 10px;
+    background-color: #fff;
+  }
+  .module-dropdown p {
+    margin: 10px;
+  }
+  .module-dropdown-ul {
+    position: relative;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-top: 10px;
+    overflow: 100%;
+    list-style: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .module-dropdown-ul li{
+    background-color: #fff;
+    padding: 10px;
+    padding-left: 20px;
+    margin-left: -40px;
+  }
+  .module-dropdown-ul li:hover{
+    background-color: #efefef;
+  }
+  .module-dropdown:hover {
+    border: 1px solid #0078d4;
+    box-shadow:inset 0px 0px 0px 1px #0078d4;
+  }
+  .module-dropdown-x{
+    background-image: url(' data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAM0lEQVR4Ae3RoREAMBACwfTf9EekgMy8wLBHASs4dUmatwgAAAAAs9w/QPBkAAAAKEvSBTV8zzG4BEJAAAAAAElFTkSuQmCC');
+    background-position: 0 !important;
+    background-repeat: no-repeat !important;
+    background-size: 30px 30px;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin-top: -34px;
+    margin-left: calc(100% - 33px);
+    transform: rotate(90deg);
+    opacity: 0.3;
+    transition: opacity 1s, transform 1s;
+  }
+  .module-dropdown:hover .module-dropdown-x{
+    transform: rotate(270deg);
+    opacity: 0.6;
+  }
+
+</style>
+</head>
+<body>
+<div class="content-main-dropdown">
+<p style="padding-right:10px;">Teste</p><div class="module-dropdown" onclick="drop(event)"> <p>Teste</p><div class="module-dropdown-x"></div>
+  <ul style="display: none;" class="module-dropdown-ul" onclick="selectitem(event)">
+    <li>1Teste</li>
+    <li>2Teste</li>
+    <li>3Teste</li>
+    <li>4Teste</li>
+  </ul>
+</div>
+</div>
+<div class="content-main-dropdown">
+  <p style="padding-right:10px;">Teste</p><div class="module-dropdown" onclick="drop(event)"> <p>Teste</p><div class="module-dropdown-x"></div>
+    <ul style="display: none;" class="module-dropdown-ul" onclick="selectitem(event)">
+      <li>1Teste</li>
+      <li>2Teste</li>
+      <li>3Teste</li>
+      <li>4Teste</li>
+    </ul>
+  </div>
+  </div>
+
+<script>
+  function drop(event){
+    event.preventDefault()
+    var temp 
+    if (event.target.classList.contains('module-dropdown')){
+      temp = event.target.getElementsByClassName('module-dropdown-ul')[0];
+    }else{
+      temp = event.target.parentElement.getElementsByClassName('module-dropdown-ul')[0]
+    }
+    if(temp && temp.style.display === 'none'){
+        temp.style.display = ''
+    }else if(temp){
+        temp.style.display = 'none'
+    }
+  }
+  window.addEventListener("click", (event)=>{
+    if(!event.target.matches('.module-dropdown')){
+      var teste = true;
+      if(event.target.parentElement){
+        teste = !event.target.parentElement.matches('.module-dropdown')
+      }
+      if(teste == true){
+        var list = document.getElementsByClassName('module-dropdown-ul');
+        for(var i =0;i<list.length;i++){
+          list[i].style.display = 'none'
+        }
+      }
+    }
+  });
+  function selectitem(event){
+    console.log(event.target.tagName)
+    if(event.target.tagName == 'LI'){
+      event.target.parentElement.parentElement.getElementsByTagName('p')[0].textContent = event.target.textContent
+    }
+  }
+</script>
+
+</body>
+</html>

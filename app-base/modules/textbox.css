@@ -1,0 +1,23 @@
+.module-imput-text{
+    padding-right: 10px;
+}
+.module-imput, .module-imput-img {
+    width: 100%;
+    font-size: 16px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-top: 10px;
+    overflow: 100%;
+    padding: 12px 22px 12px 12px;
+  }
+.module-imput-img {
+    background-position: 7px 4px !important;
+    background-repeat: no-repeat !important;
+    background-size: 30px 30px;
+    padding: 12px 22px 12px 40px;
+  }
+.module-imput:focus , .module-imput-img:focus {
+    border: 1px solid #0078d4;
+    box-shadow:inset 0px 0px 0px 1px #0078d4;
+  }

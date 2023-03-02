@@ -1,0 +1,66 @@
+.content-main-table{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .content-main-title{
+    width: 60%;
+    padding: 10.5px;
+    padding-left: calc(0.5% + 10px);
+    margin-top: 10px;
+    align-content: center;
+  }
+  .generic-table-search {
+    background-image: url('/images/searchicon.png');
+    background-position: 6px 6px;
+    background-repeat: no-repeat;
+    background-size: 30px;
+    flex-grow: 1;
+    font-size: 16px;
+    height: 18px;
+    padding: 12px 22px 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-right: 0.5%;
+    outline: none;
+    width: auto;
+  }
+  .generic-table-search:focus {
+    border: 1px solid #0078d4;
+    box-shadow:inset 0px 0px 0px 1px #0078d4;
+  }
+  .generic-table {
+    width: 99%;
+    border-collapse: collapse;
+    margin-left: 0.5%;
+    margin-top: -10px;
+    font-size: 16px;
+  }
+  
+  .generic-table td {
+    text-align: left;
+    padding: 12px;
+  }
+  
+  .generic-table tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .generic-table tbody tr:hover, .generic-table thead tr td:hover {
+    background-color: #f1f1f1;
+  }
+  .generic-table thead{
+    border-bottom: 2px solid #ddd;
+  }
+  .generic-table thead tr{
+    border: none;
+  }
+  .generic-table thead tr td{
+    text-align: left;
+    padding: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 20px;
+  
+  }
